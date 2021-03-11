@@ -48,4 +48,19 @@ public class JokeController {
         }
         return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(object.toJSONString());
     }
+    @GetMapping("/joke")
+    public ResponseEntity<String> getRandomJoke(){
+        JSONObject object = new JSONObject();
+        int status;
+        if (list.size()==0){
+            object.put("error","No joke in database");
+            status = 404;
+        }else {
+            int id =(int) ((Math.random() * (3 - 1)) + 1);
+            object.put("id",id);
+            object.put("joke",list.get(id-1));
+            status = 200;
+        }
+        return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(object.toJSONString());
+    }
 }
