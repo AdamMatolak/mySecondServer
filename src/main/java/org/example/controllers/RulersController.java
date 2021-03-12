@@ -12,16 +12,16 @@ import java.util.List;
 
 @RestController
 public class RulersController {
-    String svk = "Zuzana Čaputová";
-    String cz = "Miloš Zeman";
-    String usa = "Joe Biden";
-    String uk = "Queen Elizabeth II";
-    String nld = "King Willem Alexander";
-    String rus = "Vladimir Putin";
-    String swd = "King Carl XVI Gustaf";
-    String swt = "Guy Parmelin";
-    String ukr = "Volodymyr Zelensky";
-    String jap = "Emperor Naruhito";
+    String svk = "Slovakia - Zuzana Čaputová";
+    String cz = "Czech Republic - Miloš Zeman";
+    String usa = "USA - Joe Biden";
+    String uk = "United Kingdom - Queen Elizabeth II";
+    String nld = "Netherlands - King Willem Alexander";
+    String rus = "Russia - Vladimir Putin";
+    String swd = "Sweden - King Carl XVI Gustaf";
+    String swt = "Switzerland - Guy Parmelin";
+    String ukr = "Ukraine - Volodymyr Zelensky";
+    String jap = "Japan - Emperor Naruhito";
 
     List<String> list = new ArrayList<>();
 

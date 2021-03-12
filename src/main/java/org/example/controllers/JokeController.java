@@ -2,10 +2,13 @@ package org.example.controllers;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -62,5 +65,20 @@ public class JokeController {
             status = 200;
         }
         return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(object.toJSONString());
+    }
+    @PostMapping("/joke/new")
+    public ResponseEntity<String> newJoke(@RequestBody String data){
+        try {
+            JSONObject object = (JSONObject) new JSONParser().parse(data);
+            String newJoke = String.valueOf(object.get("joke"));
+            if (newJoke==null){
+                return ResponseEntity.status(400).contentType(MediaType.APPLICATION_JSON).body("{}");
+            }
+            list.add(newJoke);
+            return ResponseEntity.status(201).contentType(MediaType.APPLICATION_JSON).body("{}");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(400).contentType(MediaType.APPLICATION_JSON).body("{}");
     }
 }
